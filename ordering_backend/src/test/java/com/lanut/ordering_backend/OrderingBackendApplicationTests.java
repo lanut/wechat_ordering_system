@@ -21,8 +21,8 @@ class OrderingBackendApplicationTests {
 
 
 	@Test
+	// 使用代码生成器输出
 	void generateDatabaseCode() {
-
 		FastAutoGenerator
 				.create(new DataSourceConfig.Builder(dataSource))
 				.globalConfig(builder -> {
