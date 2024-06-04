@@ -10,6 +10,6 @@ class TestController {
     @ResponseBody
     @GetMapping("/")
     fun index(): String {
-        return "Hello World"
+        return "Hello World Kotlin"
     }
 }
