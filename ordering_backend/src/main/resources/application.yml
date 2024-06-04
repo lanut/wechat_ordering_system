@@ -5,3 +5,9 @@ spring:
   #  Spring Mvc相关配置
   mvc:
     static-path-pattern: /static/**
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/wechat_ordering_system
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
