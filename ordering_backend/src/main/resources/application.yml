@@ -1,0 +1,7 @@
+server:
+  port: 8080
+
+spring:
+  #  Spring Mvc相关配置
+  mvc:
+    static-path-pattern: /static/**
