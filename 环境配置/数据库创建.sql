@@ -1,5 +1,3 @@
-CREATE DATABASE wechat_ordering_system;
-USE wechat_ordering_system;
 CREATE TABLE user
 (
     user_id       INT AUTO_INCREMENT PRIMARY KEY,
