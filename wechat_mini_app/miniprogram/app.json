@@ -1,22 +1,24 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/order/index",
+    "pages/details/index",
+    "pages/pay/index",
+    "pages/success/index",
+    "pages/nonet/index",
+    "pages/address/address",
+    "pages/remark/index",
+    "pages/my/my",
+    "pages/addOrEditAddress/addOrEditAddress",
+    "pages/historyOrder/historyOrder"
   ],
+  "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "苍穹外卖",
+    "navigationBarBackgroundColor": "#E95F3C",
+    "backgroundColor": "#F8F8F8"
   },
-  "style": "v2",
-  "rendererOptions": {
-    "skyline": {
-      "defaultDisplayBlock": true,
-      "disableABTest": true,
-      "sdkVersionBegin": "3.0.0",
-      "sdkVersionEnd": "15.255.255"
-    }
-  },
-  "componentFramework": "glass-easel",
-  "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }
