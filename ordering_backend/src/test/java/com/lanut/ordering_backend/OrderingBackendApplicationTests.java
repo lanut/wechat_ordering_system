@@ -1,46 +1,23 @@
 package com.lanut.ordering_backend;
 
-import com.baomidou.mybatisplus.generator.FastAutoGenerator;
-import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import jakarta.annotation.Resource;
-import org.apache.ibatis.annotations.Mapper;
+import com.lanut.ordering_backend.web.JavaTestController;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.sql.DataSource;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class OrderingBackendApplicationTests {
-	@Resource
-	DataSource dataSource;
+	private static final Logger log = LoggerFactory.getLogger(OrderingBackendApplicationTests.class);
 
 	@Test
+	// 测试javaIndex方法
 	void contextLoads() {
-
+		 JavaTestController javaTestController = new JavaTestController();
+		 assertEquals("Hello World Java", javaTestController.javaIndex());
+		 log.info("javaIndex方法测试通过");
 	}
-
-
-	@Test
-	// 使用代码生成器输出
-	void generateDatabaseCode() {
-		FastAutoGenerator
-				.create(new DataSourceConfig.Builder(dataSource))
-				.globalConfig(builder -> {
-					builder.author("lanut");
-					builder.commentDate("2024-06-04");
-					builder.outputDir("src\\main\\java");
-				})      			//打包设置，这里设置一下包名就行，注意跟我们项目包名设置为一致的
-				.packageConfig(builder -> builder.parent("com.lanut.ordering_backend"))
-				.strategyConfig(builder -> {
-					//设置为所有Mapper添加@Mapper注解
-					builder
-							.mapperBuilder()
-							.mapperAnnotation(Mapper.class)
-							.build();
-				})
-				.execute();
-	}
-
-
 
 }

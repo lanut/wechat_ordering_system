@@ -116,6 +116,9 @@
 				</executions>
 				<configuration>
 					<jvmTarget>1.8</jvmTarget>
+					<compilerPlugins>
+						<plugin>k2</plugin>
+					</compilerPlugins>
 				</configuration>
 			</plugin>
 			<plugin>

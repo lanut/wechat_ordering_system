@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class JavaTestController {
 
+    @SuppressWarnings("SameReturnValue")
     @ResponseBody
     @GetMapping("/Java")
     public String javaIndex() {
         return "Hello World Java";
     }
 
+    @SuppressWarnings("SameReturnValue")
     @ResponseBody
     @GetMapping("/test")
     public String test(){

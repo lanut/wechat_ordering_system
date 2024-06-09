@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ResponseBody
 
 
+@Suppress("SameReturnValue")
 @Controller
 class TestController {
     @ResponseBody
