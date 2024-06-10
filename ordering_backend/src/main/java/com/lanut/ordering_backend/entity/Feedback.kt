@@ -20,19 +20,22 @@ class Feedback : Serializable {
 
     var userId: Int? = null
 
-    var dishId: Int? = null
+    var orderId: Int? = null
 
     var feedbackContent: String? = null
 
     var feedbackDate: LocalDateTime? = null
 
+    var rating: Int? = null // 1-5
+
     override fun toString(): String {
         return "Feedback{" +
         "feedbackId=" + feedbackId +
         ", userId=" + userId +
-        ", dishId=" + dishId +
+        ", dishId=" + orderId +
         ", feedbackContent=" + feedbackContent +
         ", feedbackDate=" + feedbackDate +
+        ", rating=" + rating +
         "}"
     }
 }

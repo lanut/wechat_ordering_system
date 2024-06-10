@@ -18,13 +18,13 @@ class User : Serializable {
     @TableId(value = "user_id", type = IdType.AUTO)
     var userId: Int? = null
 
-    var username: String? = null
+    var openid: String? = null
 
-    var password: String? = null
+    var nickname: String? = null
+
+    var avatarUrl: String? = null
 
     var role: String? = null
-
-    var email: String? = null
 
     var phoneNumber: String? = null
 
@@ -35,10 +35,10 @@ class User : Serializable {
     override fun toString(): String {
         return "User{" +
         "userId=" + userId +
-        ", username=" + username +
-        ", password=" + password +
+        ", openid=" + openid +
+        ", nickname=" + nickname +
+        ", avatar_url=" + avatarUrl +
         ", role=" + role +
-        ", email=" + email +
         ", phoneNumber=" + phoneNumber +
         ", registerDate=" + registerDate +
         ", lastLogin=" + lastLogin +
