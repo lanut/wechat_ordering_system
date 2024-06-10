@@ -4,21 +4,27 @@ server:
 spring:
   #  Spring Mvc相关配置
   mvc:
+    # 静态资源路径
     static-path-pattern: /static/**
+  web:
+    resources:
+      # 静态资源路径
+      static-locations: classpath:/static,classpath:/public,file:SystemData
 
+  # 数据库配置
   datasource:
     url: jdbc:mysql://campus-network.lanut.top:28139/WeChatOrderingCourseDesign?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
     username: WeChatOrderingCourseDesign
     password: e64xEMy4bCMp2hBa
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+# 启用数据库日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 #  datasource:
 #    url: jdbc:mysql://localhost:3306/wechat_ordering_system?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
 #    username: root
 #    password: admin
 #    driver-class-name: com.mysql.cj.jdbc.Driver
-
-#mybatis:
-#  configuration:
-#    #下划线转驼峰
-#    map-underscore-to-camel-case: true
