@@ -1,6 +1,7 @@
 package com.lanut.ordering_backend.entity
 
 import com.baomidou.mybatisplus.annotation.IdType
+import com.baomidou.mybatisplus.annotation.TableField
 import com.baomidou.mybatisplus.annotation.TableId
 import java.io.Serializable
 
@@ -23,6 +24,7 @@ class Carousel : Serializable {
 
     var link: String? = null
 
+    @TableField("`order`")
     var order: Int? = null
 
     override fun toString(): String {

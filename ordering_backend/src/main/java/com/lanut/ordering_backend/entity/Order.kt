@@ -2,6 +2,7 @@ package com.lanut.ordering_backend.entity
 
 import com.baomidou.mybatisplus.annotation.IdType
 import com.baomidou.mybatisplus.annotation.TableId
+import com.baomidou.mybatisplus.annotation.TableName
 import java.io.Serializable
 import java.math.BigDecimal
 import java.time.LocalDateTime
@@ -14,6 +15,7 @@ import java.time.LocalDateTime
  * @author lanut
  * @since 2024-06-04
  */
+@TableName("`order`")
 class Order : Serializable {
 
     @TableId(value = "order_id", type = IdType.AUTO)
