@@ -1,6 +1,6 @@
 package com.lanut.ordering_backend.service
 
-import com.lanut.ordering_backend.entity.User
+import com.lanut.ordering_backend.entity.dto.User
 import com.baomidou.mybatisplus.extension.service.IService
 
 /**

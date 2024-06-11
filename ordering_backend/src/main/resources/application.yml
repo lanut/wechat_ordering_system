@@ -18,6 +18,13 @@ spring:
     password: e64xEMy4bCMp2hBa
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  #Jwt配置
+  security:
+    jwt:
+      # noinspection SpellCheckingInspection
+      key: asdfghjkl
+      expire: 604800000
+
 # 启用数据库日志
 mybatis-plus:
   configuration:

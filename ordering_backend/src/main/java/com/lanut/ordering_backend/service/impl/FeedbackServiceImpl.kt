@@ -1,6 +1,6 @@
 package com.lanut.ordering_backend.service.impl
 
-import com.lanut.ordering_backend.entity.Feedback
+import com.lanut.ordering_backend.entity.dto.Feedback
 import com.lanut.ordering_backend.mapper.FeedbackMapper
 import com.lanut.ordering_backend.service.IFeedbackService
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl

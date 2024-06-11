@@ -1,4 +1,4 @@
-package com.lanut.ordering_backend.entity
+package com.lanut.ordering_backend.entity.dto
 
 import com.baomidou.mybatisplus.annotation.IdType
 import com.baomidou.mybatisplus.annotation.TableId

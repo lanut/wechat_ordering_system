@@ -1,6 +1,6 @@
 package com.lanut.ordering_backend.service.impl
 
-import com.lanut.ordering_backend.entity.Carousel
+import com.lanut.ordering_backend.entity.dto.Carousel
 import com.lanut.ordering_backend.mapper.CarouselMapper
 import com.lanut.ordering_backend.service.ICarouselService
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl

@@ -1,6 +1,6 @@
 package com.lanut.ordering_backend.mapper
 
-import com.lanut.ordering_backend.entity.Category
+import com.lanut.ordering_backend.entity.dto.Category
 import com.baomidou.mybatisplus.core.mapper.BaseMapper
 import org.apache.ibatis.annotations.Mapper
 

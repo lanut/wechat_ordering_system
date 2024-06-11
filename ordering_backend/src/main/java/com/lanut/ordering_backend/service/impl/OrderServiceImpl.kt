@@ -1,6 +1,6 @@
 package com.lanut.ordering_backend.service.impl
 
-import com.lanut.ordering_backend.entity.Order
+import com.lanut.ordering_backend.entity.dto.Order
 import com.lanut.ordering_backend.mapper.OrderMapper
 import com.lanut.ordering_backend.service.IOrderService
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl
