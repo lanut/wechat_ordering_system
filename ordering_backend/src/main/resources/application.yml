@@ -23,7 +23,7 @@ spring:
     jwt:
       # noinspection SpellCheckingInspection
       key: asdfghjkl
-      expire: 604800000
+      expire: 604800
 
 # 启用数据库日志
 mybatis-plus:

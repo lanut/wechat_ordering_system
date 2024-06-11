@@ -13,7 +13,7 @@ import java.util.Calendar
 import java.util.Date
 
 @Component
-open class JwtUtils {
+class JwtUtils {
 
 
     @Value("\${spring.security.jwt.key}")
@@ -24,7 +24,7 @@ open class JwtUtils {
 
     fun expireTime(): Date {
         val instance = Calendar.getInstance()
-        instance.add(Calendar.HOUR, expire)
+        instance.add(Calendar.SECOND, expire)
         return instance.time
     }
 
@@ -52,7 +52,8 @@ open class JwtUtils {
             return null
         }
         try {
-            val verify = JWT.require(Algorithm.HMAC256(key)).build().verify(token)
+            val jwtVerifier = JWT.require(Algorithm.HMAC256(key)).build()
+            val verify = jwtVerifier.verify(token)
             return if (Date().before(verify.expiresAt)) verify else null
         } catch (e: JWTVerificationException) {
             return null
