@@ -13,7 +13,7 @@ spring:
 
   # 数据库配置
   datasource:
-    url: jdbc:mysql://campus-network.lanut.top:28139/WeChatOrderingCourseDesign?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://campus-network.lanut.top:3306/WeChatOrderingCourseDesign?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
     username: WeChatOrderingCourseDesign
     password: e64xEMy4bCMp2hBa
     driver-class-name: com.mysql.cj.jdbc.Driver
