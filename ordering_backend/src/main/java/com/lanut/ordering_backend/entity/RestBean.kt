@@ -2,8 +2,14 @@ package com.lanut.ordering_backend.entity
 
 import com.alibaba.fastjson2.JSONWriter
 import com.alibaba.fastjson2.toJSONString
+import java.text.SimpleDateFormat
+import java.util.Date
 
 data class RestBean<T>(val code: Int, val data: T?, val message: String) {
+
+    @Suppress("unused")
+    val dateTime = SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(Date())
+
     companion object {
         @JvmStatic
         fun <T> success(data: T): RestBean<T> {
