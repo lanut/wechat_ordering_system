@@ -15,7 +15,6 @@ import java.util.Date
 @Component
 class JwtUtils {
 
-
     @Value("\${spring.security.jwt.key}")
     val key = ""
 
@@ -54,8 +53,9 @@ class JwtUtils {
         try {
             val jwtVerifier = JWT.require(Algorithm.HMAC256(key)).build()
             val verify = jwtVerifier.verify(token)
-            return if (Date().before(verify.expiresAt)) verify else null
-        } catch (e: JWTVerificationException) {
+            val expiresAt = verify.expiresAt
+            return if (Date().before(expiresAt)) verify else null
+        } catch (_: JWTVerificationException) {
             return null
         }
     }
@@ -64,12 +64,12 @@ class JwtUtils {
         val claims = jwt.claims
         return User
             .withUsername(claims["name"]!!.asString())
-            .password("")
+            .password("********")
             .authorities(*(claims["authorities"]!!.asArray(String::class.java)))
             .build()
     }
 
     fun toId(jWT: DecodedJWT): Int {
-        return jWT.getClaim("id").asInt()
+        return jWT.claims["id"]!!.asInt()
     }
 }
