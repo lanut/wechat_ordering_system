@@ -2,6 +2,7 @@ package com.lanut.ordering_backend.configuration
 
 
 import com.lanut.ordering_backend.entity.RestAuthFailure
+import com.lanut.ordering_backend.entity.RestForbidden
 import com.lanut.ordering_backend.entity.RestSuccess
 import com.lanut.ordering_backend.entity.vo.AuthorizeVO
 import com.lanut.ordering_backend.filter.JwtAuthorizeFilter
@@ -61,6 +62,11 @@ open class SecurityConfiguration {
                     response.contentType = "application/json"
                     response.characterEncoding = "UTF-8"
                     response.writer.write("用户未登录".RestAuthFailure().asJsonString())
+                }
+                .accessDeniedHandler { request, response, accessDeniedException ->
+                    response.contentType = "application/json"
+                    response.characterEncoding = "UTF-8"
+                    response.writer.write("用户无权限".RestForbidden().asJsonString())
                 }
             }
         .csrf { conf -> conf

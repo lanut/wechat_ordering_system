@@ -11,18 +11,22 @@ data class RestBean<T>(val code: Int, val data: T?, val message: String) {
         }
 
         @JvmStatic
-        fun <T> failure(code: Int, message: String): RestBean<T> {
+        fun failure(code: Int, message: String): RestBean<Any> {
             return RestBean(code, null, message)
         }
 
         @JvmStatic
-        fun <T> failure(code: Int): RestBean<T> {
+        fun failure(code: Int): RestBean<Any> {
             return failure(code, "请求失败")
         }
     }
 
     fun asJsonString(): String {
         return this.toJSONString(JSONWriter.Feature.WriteNulls)
+    }
+
+    override fun toString(): String {
+        return asJsonString()
     }
 }
 
@@ -32,11 +36,16 @@ fun <T> T.RestSuccess(): RestBean<T> {
 }
 
 @Suppress("FunctionName")
-fun String.RestFailure(code: Int): RestBean<String> {
+fun String.RestFailure(code: Int): RestBean<Any> {
     return RestBean.failure(code, this)
 }
 
 @Suppress("FunctionName")
-fun String.RestAuthFailure(): RestBean<String> {
+fun String.RestAuthFailure(): RestBean<Any> {
     return RestBean.failure(401, this)
+}
+
+@Suppress("FunctionName")
+fun String.RestForbidden(): RestBean<Any> {
+    return RestBean.failure(403, this)
 }
