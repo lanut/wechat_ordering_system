@@ -23,7 +23,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler
 
 @Configuration
-open class SecurityConfiguration : AuthenticationSuccessHandler, AuthenticationFailureHandler, LogoutSuccessHandler {
+open class SecurityConfiguration {
 
     @Resource
     lateinit var jwtUtils: JwtUtils
@@ -39,15 +39,37 @@ open class SecurityConfiguration : AuthenticationSuccessHandler, AuthenticationF
         }
         .formLogin { conf -> conf
             .loginProcessingUrl("/api/auth/login").usernameParameter("username")
-            .failureHandler(this).successHandler(this)
+            .failureHandler { _, response, exception ->
+                response.contentType = "application/json"
+                response.characterEncoding = "UTF-8"
+                response.writer.write(exception.message!!.RestFailure(401).asJsonString())
+            }
+            .successHandler { request, response, authentication ->
+                response.contentType = "application/json"
+                response.characterEncoding = "UTF-8"
+                val user = authentication.principal as User
+                // TODO: 此处为测试数据，没有与数据库相连
+                val token = jwtUtils.creatJwt(user, 1, "lanut")
+                val authorizeVO = AuthorizeVO("lanut", "admin", token, jwtUtils.expireTime())
+                response.writer.write(authorizeVO.RestSuccess().asJsonString())
+            }
         }
         .logout { conf -> conf
             .logoutUrl("/api/auth/logout")
-                .logoutSuccessHandler(this)
+                .logoutSuccessHandler { _, _, _ ->
+
+                }
         }
         .sessionManagement { conf -> conf
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         }
+            .exceptionHandling { conf -> conf
+                .authenticationEntryPoint { _, response, _ ->
+                    response.contentType = "application/json"
+                    response.characterEncoding = "UTF-8"
+                    response.writer.write("用户未登录".RestFailure(401).asJsonString())
+                }
+            }
         .csrf { conf -> conf
             .disable()
         }
@@ -55,34 +77,7 @@ open class SecurityConfiguration : AuthenticationSuccessHandler, AuthenticationF
         .build()
     }
 
-    override fun onAuthenticationSuccess(
-        request: HttpServletRequest,
-        response: HttpServletResponse,
-        authentication: Authentication
-    ) {
-        response.contentType = "application/json"
-        response.characterEncoding = "UTF-8"
-        val user = authentication.principal as User
-        // TODO: 此处为测试数据，没有与数据库相连
-        val token = jwtUtils.creatJwt(user, 1, "lanut")
-        val authorizeVO = AuthorizeVO("lanut", "admin", token, jwtUtils.expireTime())
-        response.writer.write(authorizeVO.RestSuccess().asJsonString())
-    }
 
-    override fun onAuthenticationFailure(
-        request: HttpServletRequest,
-        response: HttpServletResponse,
-        exception: AuthenticationException
-    ) {
-        response.contentType = "application/json"
-        response.characterEncoding = "UTF-8"
-        response.writer.write(exception.message!!.RestFailure(401).asJsonString())
-    }
 
-    override fun onLogoutSuccess(
-        request: HttpServletRequest,
-        response: HttpServletResponse,
-        authentication: Authentication
-    ) {
-    }
+
 }
