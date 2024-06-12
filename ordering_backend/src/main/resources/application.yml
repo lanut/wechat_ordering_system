@@ -11,12 +11,24 @@ spring:
       # 静态资源路径
       static-locations: classpath:/static,classpath:/public,file:SystemData
 
-  # 数据库配置
+ # 数据库配置
   datasource:
     url: jdbc:mysql://campus-network.lanut.top:3306/WeChatOrderingCourseDesign?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
     username: WeChatOrderingCourseDesign
     password: e64xEMy4bCMp2hBa
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+#  datasource:
+#    url: jdbc:mysql://8.222.189.149:3306/WeChatOrderingCourseDesign?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+#    username: WeChatOrdering
+#    password: e64xEMy4bCMp2hBa
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/wechat_ordering_system?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+#    username: root
+#    password: admin
+#    driver-class-name: com.mysql.cj.jdbc.Driver
 
   #Jwt配置
   security:
@@ -29,9 +41,3 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/wechat_ordering_system?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
-#    username: root
-#    password: admin
-#    driver-class-name: com.mysql.cj.jdbc.Driver

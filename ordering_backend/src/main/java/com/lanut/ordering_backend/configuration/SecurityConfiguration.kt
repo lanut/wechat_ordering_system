@@ -21,7 +21,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler
 
 @Configuration
-open class SecurityConfiguration {
+open class SecurityConfiguration:AuthenticationSuccessHandler, AuthenticationFailureHandler, LogoutSuccessHandler {
 
     @Resource
     lateinit var jwtUtils: JwtUtils
@@ -34,10 +34,10 @@ open class SecurityConfiguration {
             conf.requestMatchers("/api/auth/*").permitAll().anyRequest().authenticated()
         }.formLogin { conf ->
             conf.loginProcessingUrl("/api/auth/login").usernameParameter("username")
-                .failureHandler(MyAuthenticationFailureHandler(jwtUtils)).successHandler(MyAuthenticationSuccessHandler(jwtUtils))
+                .failureHandler(this).successHandler(this)
         }.logout { conf ->
             conf.logoutUrl("/api/auth/logout")
-                .logoutSuccessHandler(MyLogoutSuccessHandler(jwtUtils))
+                .logoutSuccessHandler(this)
         }.sessionManagement{conf ->
             conf.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         }.csrf{ conf ->
@@ -45,11 +45,6 @@ open class SecurityConfiguration {
         }.build()
     }
 
-
-
-}
-
-class MyAuthenticationSuccessHandler(val jwtUtils: JwtUtils) : AuthenticationSuccessHandler {
     override fun onAuthenticationSuccess(
         request: HttpServletRequest,
         response: HttpServletResponse,
@@ -63,9 +58,7 @@ class MyAuthenticationSuccessHandler(val jwtUtils: JwtUtils) : AuthenticationSuc
         val authorizeVO = AuthorizeVO("lanut", "admin", token, jwtUtils.expireTime())
         response.writer.write(authorizeVO.RestSuccess().asJsonString())
     }
-}
 
-class MyAuthenticationFailureHandler(val jwtUtils: JwtUtils) : AuthenticationFailureHandler {
     override fun onAuthenticationFailure(
         request: HttpServletRequest,
         response: HttpServletResponse,
@@ -75,9 +68,7 @@ class MyAuthenticationFailureHandler(val jwtUtils: JwtUtils) : AuthenticationFai
         response.characterEncoding = "UTF-8"
         response.writer.write(exception.message!!.RestFailure(401).asJsonString())
     }
-}
 
-class MyLogoutSuccessHandler(val jwtUtils: JwtUtils) : LogoutSuccessHandler {
     override fun onLogoutSuccess(
         request: HttpServletRequest,
         response: HttpServletResponse,

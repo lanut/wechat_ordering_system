@@ -1,6 +1,8 @@
 package com.lanut.ordering_backend
 
 
+import com.lanut.ordering_backend.entity.RestBean
+import com.lanut.ordering_backend.entity.RestFailure
 import com.lanut.ordering_backend.mapper.CarouselMapper
 import com.lanut.ordering_backend.mapper.CategoryMapper
 import com.lanut.ordering_backend.mapper.DishMapper
@@ -38,9 +40,11 @@ class SqlTests {
 
     @Test
     fun testSelect() {
-        val user = userMapper.selectById(1)
+        var user = userMapper.selectById(1)
         println(user)
         println(user.lastLogin!!.toString())
+        user = userMapper.selectById(55)
+        println(user)
     }
 
     // 测试所有Entity的Mapper
@@ -55,6 +59,13 @@ class SqlTests {
         carouselMapper.selectList(null)
     }
 
+    @Test
+    fun testRestBean() {
+        val restBean = RestBean.success(userMapper.selectById(1))
+        println(restBean.asJsonString())
+        val restBean2 = "not found".RestFailure(404)
+        println(restBean2.asJsonString())
+    }
 
 /*
     @Test
