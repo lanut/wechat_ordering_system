@@ -48,10 +48,10 @@ open class SecurityConfiguration {
                 response.writer.write(authorizeVO.RestSuccess().asJsonString())
             }
         }
+        // 在微信小程序登录的过程中，无需进行登出操作
         .logout { conf -> conf
             .logoutUrl("/api/auth/logout")
                 .logoutSuccessHandler { _, _, _ ->
-
                 }
         }
         .sessionManagement { conf -> conf
