@@ -35,3 +35,8 @@ fun <T> T.RestSuccess(): RestBean<T> {
 fun String.RestFailure(code: Int): RestBean<String> {
     return RestBean.failure(code, this)
 }
+
+@Suppress("FunctionName")
+fun String.RestAuthFailure(): RestBean<String> {
+    return RestBean.failure(401, this)
+}

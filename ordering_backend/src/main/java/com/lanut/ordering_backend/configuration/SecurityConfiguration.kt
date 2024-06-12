@@ -1,7 +1,7 @@
 package com.lanut.ordering_backend.configuration
 
 
-import com.lanut.ordering_backend.entity.RestFailure
+import com.lanut.ordering_backend.entity.RestAuthFailure
 import com.lanut.ordering_backend.entity.RestSuccess
 import com.lanut.ordering_backend.entity.vo.AuthorizeVO
 import com.lanut.ordering_backend.filter.JwtAuthorizeFilter
@@ -35,7 +35,7 @@ open class SecurityConfiguration {
             .failureHandler { _, response, exception ->
                 response.contentType = "application/json"
                 response.characterEncoding = "UTF-8"
-                response.writer.write(exception.message!!.RestFailure(401).asJsonString())
+                response.writer.write(exception.message!!.RestAuthFailure().asJsonString())
             }
             .successHandler { request, response, authentication ->
                 response.contentType = "application/json"
@@ -60,7 +60,7 @@ open class SecurityConfiguration {
                 .authenticationEntryPoint { _, response, _ ->
                     response.contentType = "application/json"
                     response.characterEncoding = "UTF-8"
-                    response.writer.write("用户未登录".RestFailure(401).asJsonString())
+                    response.writer.write("用户未登录".RestAuthFailure().asJsonString())
                 }
             }
         .csrf { conf -> conf
@@ -69,8 +69,4 @@ open class SecurityConfiguration {
         .addFilterBefore(jwtAuthorizeFilter, UsernamePasswordAuthenticationFilter::class.java)
         .build()
     }
-
-
-
-
 }
