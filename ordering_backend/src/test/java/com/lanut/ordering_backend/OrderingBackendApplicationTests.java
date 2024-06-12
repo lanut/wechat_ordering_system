@@ -1,7 +1,6 @@
 package com.lanut.ordering_backend;
 
 import com.lanut.ordering_backend.entity.RestBean;
-import com.lanut.ordering_backend.entity.dto.Dish;
 import com.lanut.ordering_backend.web.JavaTestController;
 import lombok.val;
 import org.junit.jupiter.api.Test;
