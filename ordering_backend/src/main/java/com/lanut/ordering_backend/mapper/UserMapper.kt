@@ -20,4 +20,7 @@ interface UserMapper : BaseMapper<User> {
 
     @Select("select * from user where nickname = #{username}")
     fun getUserByUsername(username: String): User?
+
+    @Select("insert into user (openid, nickname, role) values (#{openid}, #{nickname}, #{role})")
+    fun saveNewUser(openid: String, nickname: String, role: String): Boolean
 }

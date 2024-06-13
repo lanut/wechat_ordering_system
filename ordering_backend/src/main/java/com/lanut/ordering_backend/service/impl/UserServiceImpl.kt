@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl
 import com.lanut.ordering_backend.entity.dto.User
 import com.lanut.ordering_backend.mapper.UserMapper
 import com.lanut.ordering_backend.service.IUserService
+import jakarta.annotation.Resource
 import org.springframework.stereotype.Service
 
 /**
@@ -16,7 +17,14 @@ import org.springframework.stereotype.Service
  */
 @Service
 open class UserServiceImpl : ServiceImpl<UserMapper, User>(), IUserService {
-    override fun getUserByOpenid(openid: String): User? {
+    @Resource
+    lateinit var userMapper: UserMapper
+
+    override fun findByOpenid(openid: String): User? {
         return baseMapper.getUserByOpenId(openid)
+    }
+
+    override fun save(openid: String, nickname: String, role: String): Boolean {
+        return userMapper.saveNewUser(openid, nickname, role)
     }
 }
