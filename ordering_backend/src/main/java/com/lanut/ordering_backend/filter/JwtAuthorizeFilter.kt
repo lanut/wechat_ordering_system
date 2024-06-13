@@ -36,7 +36,7 @@ class JwtAuthorizeFilter : OncePerRequestFilter() {
         val authentication = UsernamePasswordAuthenticationToken(user, null, user.authorities)
         authentication.details = (WebAuthenticationDetailsSource().buildDetails(request))
         SecurityContextHolder.getContext().authentication = authentication
-        request.setAttribute("id", utils.toId(jwt))
+        // request.setAttribute("id", utils.toId(jwt))
         filterChain.doFilter(request, response)
     }
 }

@@ -11,4 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService
  * @author lanut
  * @since 2024-06-04
  */
-interface IUserService : IService<User>
+interface IUserService : IService<User> {
+    fun getUserByOpenid(openId: String): User?
+}

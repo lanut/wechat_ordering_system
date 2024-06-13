@@ -65,7 +65,7 @@ class JwtUtils {
         return User
             .withUsername(claims["name"]!!.asString())
             .password("********")
-            .authorities(*(claims["authorities"]!!.asArray(String::class.java)))
+            .authorities(*(claims["authorities"]?.asArray(String::class.java)))
             .build()
     }
 

@@ -75,4 +75,6 @@ open class SecurityConfiguration {
         .addFilterBefore(jwtAuthorizeFilter, UsernamePasswordAuthenticationFilter::class.java)
         .build()
     }
+
+
 }
