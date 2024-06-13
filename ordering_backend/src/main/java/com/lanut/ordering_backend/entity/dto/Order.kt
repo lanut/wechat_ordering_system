@@ -9,33 +9,31 @@ import java.time.LocalDateTime
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author lanut
  * @since 2024-06-04
  */
 @TableName("`order`")
-class Order : Serializable {
+class Order(
 
     @TableId(value = "order_id", type = IdType.AUTO)
-    var orderId: Int? = null
-
-    var userId: Int? = null
-
-    var orderDate: LocalDateTime? = null
-
-    var totalAmount: BigDecimal? = null
-
-    var orderStatus: String? = null
-
+    var orderId: Int,
+    var userId: Int,
+    var tableId: Int,
+    var orderDate: LocalDateTime,
+    var totalAmount: BigDecimal,
+    var orderStatus: String,
+) : Serializable {
     override fun toString(): String {
         return "Order{" +
-        "orderId=" + orderId +
-        ", userId=" + userId +
-        ", orderDate=" + orderDate +
-        ", totalAmount=" + totalAmount +
-        ", orderStatus=" + orderStatus +
-        "}"
+                "orderId=" + orderId +
+                ", userId=" + userId +
+                ", tableId=" + tableId +
+                ", orderDate=" + orderDate +
+                ", totalAmount=" + totalAmount +
+                ", orderStatus=" + orderStatus +
+                "}"
     }
 }

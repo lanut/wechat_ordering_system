@@ -7,38 +7,30 @@ import java.math.BigDecimal
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author lanut
  * @since 2024-06-04
  */
-class Dish : Serializable {
-
-    @TableId(value = "dish_id", type = IdType.AUTO)
-    var dishId: Int? = null
-
-    var categoryId: Int? = null
-
-    var dishName: String? = null
-
-    var price: BigDecimal? = null
-
-    var description: String? = null
-
-    var imageUrl: String? = null
-
-    var status: String? = null
-
+class Dish(
+    @TableId(value = "dish_id", type = IdType.AUTO) var dishId: Int,
+    var categoryId: Int,
+    var dishName: String,
+    var price: BigDecimal,
+    var description: String?,
+    var imageUrl: String?,
+    var status: String,
+) : Serializable {
     override fun toString(): String {
         return "Dish{" +
-        "dishId=" + dishId +
-        ", categoryId=" + categoryId +
-        ", dishName=" + dishName +
-        ", price=" + price +
-        ", description=" + description +
-        ", imageUrl=" + imageUrl +
-        ", status=" + status +
-        "}"
+                "dishId=" + dishId +
+                ", categoryId=" + categoryId +
+                ", dishName=" + dishName +
+                ", price=" + price +
+                ", description=" + description +
+                ", imageUrl=" + imageUrl +
+                ", status=" + status +
+                "}"
     }
 }

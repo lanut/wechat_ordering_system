@@ -13,20 +13,16 @@ import java.io.Serializable
  * @author lanut
  * @since 2024-06-04
  */
-class Carousel : Serializable {
+class Carousel  (
 
     @TableId(value = "carousel_id", type = IdType.AUTO)
-    var carouselId: Int? = null
-
-    var imageUrl: String? = null
-
-    var title: String? = null
-
-    var link: String? = null
-
+    var carouselId: Int,
+    var imageUrl: String,
+    var title: String?,
+    var link: String?,
     @TableField("`order`")
-    var order: Int? = null
-
+    var order: Int,
+): Serializable {
     override fun toString(): String {
         return "Carousel{" +
         "carouselId=" + carouselId +

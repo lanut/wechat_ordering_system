@@ -2,36 +2,38 @@ package com.lanut.ordering_backend.entity.dto
 
 import com.baomidou.mybatisplus.annotation.IdType
 import com.baomidou.mybatisplus.annotation.TableId
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.userdetails.UserDetails
 import java.io.Serializable
 import java.time.LocalDateTime
 
 /**
  * <p>
- * 
+ *
  * </p>
+ * @param userId 用户ID
+ * @param openid 用户的openid
+ * @param nickname 用户的昵称
+ * @param avatarUrl 用户的头像
+ * @param role 用户的角色: `admin`或`customer`
+ * @param phoneNumber 用户的电话号码
+ * @param registerDate 用户的注册日期
+ * @param lastLogin 用户的最后登录日期
  *
  * @author lanut
  * @since 2024-06-04
  */
-class User : Serializable {
-
+class User(
     @TableId(value = "user_id", type = IdType.AUTO)
-    var userId: Int? = null
-
-    var openid: String? = null
-
-    var nickname: String? = null
-
-    var avatarUrl: String? = null
-
-    var role: String? = null
-
-    var phoneNumber: String? = null
-
-    var registerDate: LocalDateTime? = null
-
-    var lastLogin: LocalDateTime? = null
-
+    var userId: Int,
+    var openid: String,
+    var nickname: String,
+    var avatarUrl: String,
+    var role: String, // 用户角色: `admin` `customer`
+    var phoneNumber: String?,
+    var registerDate: LocalDateTime,
+    var lastLogin: LocalDateTime,
+) : Serializable, UserDetails  {
     override fun toString(): String {
         return "User{" +
         "userId=" + userId +
@@ -44,4 +46,26 @@ class User : Serializable {
         ", lastLogin=" + lastLogin +
         "}"
     }
+
+    // 获得用户的权限
+    override fun getAuthorities(): Collection<GrantedAuthority?> {
+        return listOf(
+            object : GrantedAuthority {
+                override fun getAuthority(): String {
+                    return role
+                }
+            }
+        )
+    }
+
+    // 获得用户的密码(不需要)
+    override fun getPassword(): String? {
+        return null
+    }
+
+    // 获得用户的用户名
+    override fun getUsername(): String {
+        return openid
+    }
+
 }

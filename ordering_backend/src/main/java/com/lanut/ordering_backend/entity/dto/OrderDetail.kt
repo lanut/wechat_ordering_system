@@ -15,19 +15,15 @@ import java.math.BigDecimal
  * @since 2024-06-04
  */
 @TableName("order_detail")
-class OrderDetail : Serializable {
+class OrderDetail (
 
     @TableId(value = "order_detail_id", type = IdType.AUTO)
-    var orderDetailId: Int? = null
-
-    var orderId: Int? = null
-
-    var dishId: Int? = null
-
-    var quantity: Int? = null
-
-    var subtotal: BigDecimal? = null
-
+    var orderDetailId: Int,
+    var orderId: Int,
+    var dishId: Int,
+    var quantity: Int,
+    var subtotal: BigDecimal,
+) : Serializable {
     override fun toString(): String {
         return "OrderDetail{" +
         "orderDetailId=" + orderDetailId +
