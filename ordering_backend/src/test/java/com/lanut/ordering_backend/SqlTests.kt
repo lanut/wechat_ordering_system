@@ -42,7 +42,7 @@ class SqlTests {
     fun testSelect() {
         var user = userMapper.selectById(1)
         println(user)
-        println(user.lastLogin!!.toString())
+        println(user.lastLogin.toString())
         user = userMapper.selectById(55)
         println(user)
     }
@@ -50,13 +50,13 @@ class SqlTests {
     // 测试所有Entity的Mapper
     @Test
     fun testSelectAll() {
-        userMapper.selectList(null)
-        categoryMapper.selectList(null)
-        dishMapper.selectList(null)
-        feedbackMapper.selectList(null)
-        orderMapper.selectList(null)
-        orderDeMapper.selectList(null)
-        carouselMapper.selectList(null)
+        println(userMapper.selectList(null).toList())
+        println(categoryMapper.selectList(null).toList())
+        println(dishMapper.selectList(null).toList())
+        println(feedbackMapper.selectList(null).toList())
+        println(orderMapper.selectList(null).toList())
+        println(orderDeMapper.selectList(null).toList())
+        println(carouselMapper.selectList(null).toList())
     }
 
     @Test

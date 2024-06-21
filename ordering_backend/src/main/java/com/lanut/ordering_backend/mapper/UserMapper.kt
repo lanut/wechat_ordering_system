@@ -18,6 +18,8 @@ interface UserMapper : BaseMapper<User> {
     @Select("select * from user where openid = #{openid}")
     fun getUserByOpenId(openid: String): User?
 
+/*
     @Select("select * from user where nickname = #{username}")
     fun getUserByUsername(username: String): User?
+*/
 }

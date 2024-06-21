@@ -5,7 +5,7 @@ CREATE TABLE user
     nickname      VARCHAR(50)                NOT NULL,                    -- 微信用户昵称
     avatar_url    VARCHAR(255),                                           -- 微信用户头像URL
     role          ENUM ('admin', 'customer') NOT NULL DEFAULT 'customer', -- 区分用户角色
-    phone_number  VARCHAR(20),                                             -- 用户手机号
+    phone_number  VARCHAR(20),                                            -- 用户手机号
     register_date TIMESTAMP                           DEFAULT CURRENT_TIMESTAMP,
     last_login    TIMESTAMP                           DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -33,6 +33,7 @@ CREATE TABLE `order`
 (
     order_id     INT AUTO_INCREMENT PRIMARY KEY,
     user_id      INT,
+    table_id     INT            NOT NULL                            DEFAULT 1,-- 餐桌号
     order_date   TIMESTAMP                                          DEFAULT CURRENT_TIMESTAMP,
     total_amount DECIMAL(10, 2) NOT NULL,
     order_status ENUM ('pending', 'paid', 'completed', 'cancelled') DEFAULT 'pending',
@@ -56,8 +57,8 @@ CREATE TABLE feedback
     user_id          INT,
     order_id         INT,
     feedback_content TEXT NOT NULL,
-    feedback_date    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    rating           INT CHECK (rating >= 1 AND rating <= 5), -- 评分字段，1到5分
+    feedback_date    TIMESTAMP                               DEFAULT CURRENT_TIMESTAMP,
+    rating           INT CHECK (rating >= 1 AND rating <= 5) DEFAULT 5, -- 评分字段，1到5分
     FOREIGN KEY (user_id) REFERENCES user (user_id),
     FOREIGN KEY (order_id) REFERENCES `order` (order_id)
 );
@@ -68,5 +69,5 @@ CREATE TABLE carousel
     image_url   VARCHAR(255) NOT NULL,
     title       VARCHAR(100),
     link        VARCHAR(255),
-    `order`     INT          NOT NULL -- 轮播图的显示顺序
+    `order`     INT          NOT NULL DEFAULT 1-- 轮播图的显示顺序
 );

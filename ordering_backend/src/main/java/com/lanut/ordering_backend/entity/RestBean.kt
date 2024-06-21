@@ -8,7 +8,7 @@ import java.util.Date
 data class RestBean<T>(val code: Int, val data: T?, val message: String) {
 
     @Suppress("unused")
-    val dateTime = SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(Date())
+    val dateTime: String = SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(Date())
 
     companion object {
         @JvmStatic

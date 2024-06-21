@@ -31,7 +31,7 @@
 			"path": "pages/order/order",
 			"style": {
 				"navigationStyle": "custom", // 隐藏默认导航
-				"navigationBarTitleText": "点餐",
+				"navigationBarTitleText": "点餐"
 				// "app-plus": {
 				// 	"titleNView": {
 				// 		"buttons": [

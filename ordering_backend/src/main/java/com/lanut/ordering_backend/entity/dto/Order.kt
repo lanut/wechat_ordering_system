@@ -17,7 +17,6 @@ import java.time.LocalDateTime
  */
 @TableName("`order`")
 class Order(
-
     @TableId(value = "order_id", type = IdType.AUTO)
     var orderId: Int,
     var userId: Int,

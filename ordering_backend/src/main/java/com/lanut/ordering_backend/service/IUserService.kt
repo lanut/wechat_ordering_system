@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService
  * @since 2024-06-04
  */
 interface IUserService : IService<User> {
-    fun getUserByOpenid(openId: String): User?
+    fun getUserByOpenid(openid: String): User?
 }

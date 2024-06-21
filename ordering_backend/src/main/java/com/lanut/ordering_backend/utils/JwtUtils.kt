@@ -3,73 +3,71 @@ package com.lanut.ordering_backend.utils
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
 import com.auth0.jwt.exceptions.JWTVerificationException
-import com.auth0.jwt.interfaces.DecodedJWT
+import com.auth0.jwt.interfaces.Claim
+import com.lanut.ordering_backend.entity.vo.VerifiedUser
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.security.core.GrantedAuthority
-import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component
-import java.util.Calendar
-import java.util.Date
+import java.util.*
 
 @Component
 class JwtUtils {
-
     @Value("\${spring.security.jwt.key}")
-    val key = ""
+    val jwtSecret: String = "" // 指定秘钥，此原理为body明文的信息加密校验到第三部分来验证jwt是否被篡改，无法对body部分加密
 
     @Value("\${spring.security.jwt.expire}")
-    val expire = 0
+    val jwtExpireTime: Int = 0
 
-    fun expireTime(): Date {
-        val instance = Calendar.getInstance()
-        instance.add(Calendar.SECOND, expire)
-        return instance.time
+    private val sign:Algorithm
+        get() = Algorithm.HMAC256(jwtSecret)
+
+
+    private fun parseJwt(token: String): Map<String, Claim> {
+        val jwtVerifier = JWT.require(sign).build()
+        val claims = try {
+            jwtVerifier.verify(token).claims
+        } catch (e: JWTVerificationException) {
+            throw e
+        }
+        return claims
     }
 
+    // 处理标头
+    private fun tokenParseToJwtToken(token: String): String {
+        // 验证并去掉Token的 `Bearer `前缀并返回，否则抛出异常
+        if (token.startsWith("Bearer ")) {
+            return token.substring(7)
+        } else {
+            throw IllegalArgumentException("Token格式不正确")
+        }
+    }
 
-    fun creatJwt(userDetails: UserDetails, id: Int, username: String): String {
-        return JWT.create()
-            .withClaim("id", id)
-            .withClaim("name", username)
-            .withClaim("authorities", userDetails.authorities.map(GrantedAuthority::getAuthority).toList())
-            .withExpiresAt(expireTime())
+    fun tokenToUserDetail(token: String): UserDetails {
+        // 先处理标头
+        val jwtToken = tokenParseToJwtToken(token)
+        // 解析Token
+        val claims = parseJwt(jwtToken)
+        // 获取载荷
+        val nickName: String = claims["nickname"]!!.asString()
+        val openid: String = claims["openid"]!!.asString()
+        val role: String = claims["role"]!!.asString()
+        return VerifiedUser(nickName, openid, role)
+    }
+
+    fun createJwt(user: VerifiedUser): String {
+        // 设置过期时间
+        val expireTime = Calendar.getInstance().apply {
+            add(Calendar.SECOND, jwtExpireTime)
+        }.time
+        // 设置body载荷，此处为明文传输 TODO: 更改为自己的验证方式
+        val token = JWT.create()
+            // 添加jwt的信息（注意：此消息为明文存储）
+            .withClaim("nickname", user.nickname)
+            .withClaim("openid", user.openid)
+            .withClaim("role", user.role.authority)
+            .withExpiresAt(expireTime)
             .withIssuedAt(Date())
-            .sign(Algorithm.HMAC256(key))
-    }
-
-    fun conventToken(headerToken: String): String? {
-        if (!headerToken.startsWith("Bearer ")) {
-            return null
-        }
-        return headerToken.substring(7)
-    }
-
-    fun resolveJwt(headerToken: String): DecodedJWT? {
-        val token = this.conventToken(headerToken)
-        if (token == null) {
-            return null
-        }
-        try {
-            val jwtVerifier = JWT.require(Algorithm.HMAC256(key)).build()
-            val verify = jwtVerifier.verify(token)
-            val expiresAt = verify.expiresAt
-            return if (Date().before(expiresAt)) verify else null
-        } catch (_: JWTVerificationException) {
-            return null
-        }
-    }
-
-    fun toUser(jwt: DecodedJWT): UserDetails {
-        val claims = jwt.claims
-        return User
-            .withUsername(claims["name"]!!.asString())
-            .password("********")
-            .authorities(*(claims["authorities"]?.asArray(String::class.java)))
-            .build()
-    }
-
-    fun toId(jWT: DecodedJWT): Int {
-        return jWT.claims["id"]!!.asInt()
+            .sign(sign)
+        return token
     }
 }

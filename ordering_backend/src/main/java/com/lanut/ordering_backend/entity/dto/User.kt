@@ -2,8 +2,6 @@ package com.lanut.ordering_backend.entity.dto
 
 import com.baomidou.mybatisplus.annotation.IdType
 import com.baomidou.mybatisplus.annotation.TableId
-import org.springframework.security.core.GrantedAuthority
-import org.springframework.security.core.userdetails.UserDetails
 import java.io.Serializable
 import java.time.LocalDateTime
 
@@ -33,7 +31,7 @@ class User(
     var phoneNumber: String?,
     var registerDate: LocalDateTime,
     var lastLogin: LocalDateTime,
-) : Serializable, UserDetails  {
+) : Serializable  {
     override fun toString(): String {
         return "User{" +
         "userId=" + userId +
@@ -46,26 +44,4 @@ class User(
         ", lastLogin=" + lastLogin +
         "}"
     }
-
-    // 获得用户的权限
-    override fun getAuthorities(): Collection<GrantedAuthority?> {
-        return listOf(
-            object : GrantedAuthority {
-                override fun getAuthority(): String {
-                    return role
-                }
-            }
-        )
-    }
-
-    // 获得用户的密码(不需要)
-    override fun getPassword(): String? {
-        return null
-    }
-
-    // 获得用户的用户名
-    override fun getUsername(): String {
-        return openid
-    }
-
 }
