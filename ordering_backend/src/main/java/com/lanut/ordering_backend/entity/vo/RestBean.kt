@@ -1,9 +1,10 @@
-package com.lanut.ordering_backend.entity
+package com.lanut.ordering_backend.entity.vo
 
 import com.alibaba.fastjson2.JSONWriter
 import com.alibaba.fastjson2.toJSONString
 import java.text.SimpleDateFormat
 import java.util.Date
+
 
 data class RestBean<T>(val code: Int, val data: T?, val message: String) {
 
@@ -37,21 +38,21 @@ data class RestBean<T>(val code: Int, val data: T?, val message: String) {
 }
 
 @Suppress("FunctionName")
-fun <T> T.RestSuccess(): RestBean<T> {
-    return RestBean.success(this)
+fun <T> T.RestSuccess(): String {
+    return RestBean.success(this).asJsonString()
 }
 
 @Suppress("FunctionName")
-fun String.RestFailure(code: Int): RestBean<Any> {
-    return RestBean.failure(code, this)
+fun String.RestFailure(code: Int): String {
+    return RestBean.failure(code, this).asJsonString()
 }
 
 @Suppress("FunctionName")
-fun String.RestAuthFailure(): RestBean<Any> {
-    return RestBean.failure(401, this)
+fun String.RestAuthFailure(): String {
+    return RestBean.failure(401, this).asJsonString()
 }
 
 @Suppress("FunctionName")
-fun String.RestForbidden(): RestBean<Any> {
-    return RestBean.failure(403, this)
+fun String.RestForbidden(): String {
+    return RestBean.failure(403, this).asJsonString()
 }

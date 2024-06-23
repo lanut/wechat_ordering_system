@@ -21,7 +21,6 @@ import java.net.URI
 
 
 @Component
-@WebFilter(filterName = "myFilter", urlPatterns = ["/api/auth/login"])
 class AuthLoginFilter : OncePerRequestFilter() {
     private var requiresAuthenticationRequestMatcher: RequestMatcher =
         RequestMatcher { request -> // 匹配 `/api/auth/login` 请求

@@ -3,7 +3,7 @@ package com.lanut.ordering_backend.entity.vo
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
-// TODO: 添加jwt信息
+
 data class VerifiedUser(
     val nickname: String,
     val openid: String,

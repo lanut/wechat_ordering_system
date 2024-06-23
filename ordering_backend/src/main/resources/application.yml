@@ -10,8 +10,17 @@ spring:
     resources:
       # 静态资源路径
       static-locations: classpath:/static,classpath:/public,file:SystemData
+      # 轮播图路径
+      carousel-path: classpath:/static/carousel
 
-#  # 数据库配置
+  servlet:
+    multipart:
+      # 单个文件最大上传大小
+      max-file-size: 10MB
+      # 单次请求最大文件上传大小
+      max-request-size: 10MB
+
+  #  # 数据库配置
 #  datasource:
 #    url: jdbc:mysql://campus-network.lanut.top:3306/WeChatOrderingCourseDesign?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
 #    username: WeChatOrderingCourseDesign

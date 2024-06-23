@@ -6,7 +6,6 @@ import com.auth0.jwt.exceptions.JWTVerificationException
 import com.auth0.jwt.interfaces.Claim
 import com.lanut.ordering_backend.entity.vo.VerifiedUser
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component
 import java.util.*
 
@@ -42,7 +41,7 @@ class JwtUtils {
         }
     }
 
-    fun tokenToUserDetail(token: String): UserDetails {
+    fun tokenToUserDetail(token: String): VerifiedUser {
         // 先处理标头
         val jwtToken = tokenParseToJwtToken(token)
         // 解析Token
@@ -59,7 +58,7 @@ class JwtUtils {
         val expireTime = Calendar.getInstance().apply {
             add(Calendar.SECOND, jwtExpireTime)
         }.time
-        // 设置body载荷，此处为明文传输 TODO: 更改为自己的验证方式
+        // 设置body载荷，此处为明文传输
         val token = JWT.create()
             // 添加jwt的信息（注意：此消息为明文存储）
             .withClaim("nickname", user.nickname)
@@ -70,4 +69,6 @@ class JwtUtils {
             .sign(sign)
         return token
     }
+
 }
+

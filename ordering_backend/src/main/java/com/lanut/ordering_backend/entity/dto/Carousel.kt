@@ -13,7 +13,7 @@ import java.io.Serializable
  * @author lanut
  * @since 2024-06-04
  */
-class Carousel  (
+class Carousel(
     @TableId(value = "carousel_id", type = IdType.AUTO)
     var carouselId: Int,
     var imageUrl: String,

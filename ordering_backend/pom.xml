@@ -22,22 +22,24 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
+		<dependency> <!-- mybatis plus 库 -->
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-spring-boot3-starter</artifactId>
 			<version>3.5.7</version>
 		</dependency>
-		<dependency>
+<!--
+		<dependency> &lt;!&ndash; mybatis plus 代码生成器库 &ndash;&gt;
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-generator</artifactId>
 			<version>3.5.7</version>
 		</dependency>
+-->
 		<dependency>
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity-engine-core</artifactId>
 			<version>2.3</version>
 		</dependency>
-		<dependency>
+		<dependency> <!-- MySQL 驱动 -->
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
@@ -67,7 +69,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-		<dependency>
+		<dependency> <!-- jwt 解析库 -->
 			<groupId>com.auth0</groupId>
 			<artifactId>java-jwt</artifactId>
 			<version>4.4.0</version>

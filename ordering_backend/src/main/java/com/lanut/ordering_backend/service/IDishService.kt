@@ -11,4 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService
  * @author lanut
  * @since 2024-06-04
  */
-interface IDishService : IService<Dish>
+interface IDishService : IService<Dish> {
+    fun getAllDishes(): List<Dish>
+}

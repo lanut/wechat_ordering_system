@@ -1,8 +1,8 @@
 package com.lanut.ordering_backend
 
 
-import com.lanut.ordering_backend.entity.RestBean
-import com.lanut.ordering_backend.entity.RestFailure
+import com.lanut.ordering_backend.entity.vo.RestBean
+import com.lanut.ordering_backend.entity.vo.RestFailure
 import com.lanut.ordering_backend.mapper.CarouselMapper
 import com.lanut.ordering_backend.mapper.CategoryMapper
 import com.lanut.ordering_backend.mapper.DishMapper
@@ -64,7 +64,7 @@ class SqlTests {
         val restBean = RestBean.success(userMapper.selectById(1))
         println(restBean.asJsonString())
         val restBean2 = "not found".RestFailure(404)
-        println(restBean2.asJsonString())
+        println(restBean2)
     }
 
 /*

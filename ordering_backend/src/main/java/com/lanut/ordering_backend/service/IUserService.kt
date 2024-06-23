@@ -13,4 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService
  */
 interface IUserService : IService<User> {
     fun getUserByOpenid(openid: String): User?
+
+    fun tokenToUser(token: String): User
 }

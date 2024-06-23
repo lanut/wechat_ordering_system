@@ -42,12 +42,27 @@ class CommonTest {
         logger.info(userDetail.authorities.map {
             it.authority
         }.toString())
-        logger.info((userDetail as VerifiedUser).toString())
+        logger.info(userDetail.toString())
         try {
             jwtUtils.tokenToUserDetail(jws)
         } catch (e: Exception) {
             logger.info(e.message)
         }
     }
+
+    @Value("\${spring.web.resources.carousel-path}")
+    val path = ""
+
+    @Test
+    fun uploadPathTest() {
+        println("$path/text1.txt")
+        val file = java.io.File("$path/text1.txt")
+        println(file.exists())
+
+
+
+    }
+
+
 }
 
