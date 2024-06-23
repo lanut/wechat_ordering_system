@@ -38,8 +38,12 @@ data class VerifiedUser(
 enum class Role(private val role: String) : GrantedAuthority {
     ADMIN("admin"), CUSTOMER("customer"), ;
 
-    override fun getAuthority(): String {
+    fun getName(): String {
         return role
+    }
+
+    override fun getAuthority(): String {
+        return "ROLE_$role"
     }
 }
 

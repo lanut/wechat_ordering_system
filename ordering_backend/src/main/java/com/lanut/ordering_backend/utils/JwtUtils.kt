@@ -63,7 +63,7 @@ class JwtUtils {
             // 添加jwt的信息（注意：此消息为明文存储）
             .withClaim("nickname", user.nickname)
             .withClaim("openid", user.openid)
-            .withClaim("role", user.role.authority)
+            .withClaim("role", user.role.getName())
             .withExpiresAt(expireTime)
             .withIssuedAt(Date())
             .sign(sign)

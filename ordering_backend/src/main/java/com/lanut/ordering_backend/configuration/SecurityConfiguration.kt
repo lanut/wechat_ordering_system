@@ -32,8 +32,17 @@ open class SecurityConfiguration {
     open fun filterChain(http: HttpSecurity): SecurityFilterChain {
         return http.authorizeHttpRequests { conf ->
             conf
-                .requestMatchers("/api/auth/*", "/static/**", "/api/test/**", "/api/common/**", "/api/dish/**", "/api/category").permitAll()
-                .anyRequest().authenticated()
+                .requestMatchers(
+                    "/api/auth/*",
+                    "/static/**",
+                    "/api/test/**",
+                    "/api/common/**",
+                    "/api/dish/**",
+                    "/api/category/**",
+                    "/api/carousel/**",
+                ).permitAll() // 允许任何人访问的网站
+                .requestMatchers("/api/admin/**").hasAnyRole("admin", "user") // 仅允许管理员访问的网站
+                .anyRequest().authenticated() // 其余需要验证用户可访问的网站
         }
             .formLogin { conf ->
                 conf
@@ -69,7 +78,6 @@ open class SecurityConfiguration {
             }
             .exceptionHandling { conf ->
                 conf
-
                     .authenticationEntryPoint { _, response, authenticationException ->
                         response.contentType = "application/json"
                         response.characterEncoding = "UTF-8"

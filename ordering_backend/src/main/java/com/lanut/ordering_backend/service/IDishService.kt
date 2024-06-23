@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService
  */
 interface IDishService : IService<Dish> {
     fun getAllDishes(): List<Dish>
+    fun addDish(dishMap: Map<String, String>): Dish?
 }
