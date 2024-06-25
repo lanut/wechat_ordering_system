@@ -16,5 +16,19 @@ class ExceptionResolver {
         val localizedMessage = e.localizedMessage
         return localizedMessage.RestFailure(404)
     }
+
+    @ExceptionHandler(Exception::class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    fun handleException(e: Exception, request: WebRequest?): String {
+        val localizedMessage = e.localizedMessage
+        return localizedMessage.RestFailure(500)
+    }
+
+    @ExceptionHandler(NotImplementedError::class)
+    @ResponseStatus(HttpStatus.NOT_IMPLEMENTED)
+    fun handleNotImplementedError(e: NotImplementedError, request: WebRequest?): String {
+        val localizedMessage = e.localizedMessage
+        return localizedMessage.RestFailure(501)
+    }
 }
 

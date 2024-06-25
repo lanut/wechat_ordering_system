@@ -2,8 +2,11 @@ package com.lanut.ordering_backend
 
 
 
+import com.lanut.ordering_backend.entity.vo.RestSuccess
 import com.lanut.ordering_backend.entity.vo.VerifiedUser
+import com.lanut.ordering_backend.service.IUserService
 import com.lanut.ordering_backend.utils.JwtUtils
+import jakarta.annotation.Resource
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -53,14 +56,20 @@ class CommonTest {
     @Value("\${spring.web.resources.carousel-path}")
     val path = ""
 
+    @Resource
+    lateinit var userService: IUserService
+
+    @Test
+    fun getUserOrdersTest() {
+//        val userOrders = userService.getUserOrders("wx1234567890")
+//        println(userOrders.RestSuccess())
+    }
+
     @Test
     fun uploadPathTest() {
         println("$path/text1.txt")
         val file = java.io.File("$path/text1.txt")
         println(file.exists())
-
-
-
     }
 
 

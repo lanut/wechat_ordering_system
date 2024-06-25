@@ -29,4 +29,7 @@ interface DishMapper : BaseMapper<Dish> {
 
     @Select("select * from dish where dish_name = #{dishName}")
     fun selectByDishName(dishName: String): Dish?
+
+    @Select("select dish_name from dish where dish_id = #{dishId}")
+    fun getDishNameByDishId(dishId: Int): String
 }

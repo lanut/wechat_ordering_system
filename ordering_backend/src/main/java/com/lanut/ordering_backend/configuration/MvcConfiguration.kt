@@ -16,9 +16,15 @@ open class MvcConfiguration: WebMvcConfigurationSupport() {
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry
             .addInterceptor(jwtTokenUserInterceptor)
-            .addPathPatterns(
-                "/api/user/**"
-            )
+            .excludePathPatterns(
+                "/static/**",
+                "/api/test/**",
+                "/api/common/**",
+                "/api/dish/**",
+                "/api/category/**",
+                "/api/carousel/**",
+                )
+            .addPathPatterns("/**")
     }
 
 }

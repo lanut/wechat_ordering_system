@@ -20,10 +20,10 @@ class Order(
     @TableId(value = "order_id", type = IdType.AUTO)
     var orderId: Int,
     var userId: Int,
-    var tableId: Int,
     var orderDate: LocalDateTime,
     var totalAmount: BigDecimal,
     var orderStatus: String,
+    var tableId: Int,
 ) : Serializable {
     override fun toString(): String {
         return "Order{" +

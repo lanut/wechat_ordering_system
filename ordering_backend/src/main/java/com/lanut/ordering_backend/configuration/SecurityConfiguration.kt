@@ -41,7 +41,7 @@ open class SecurityConfiguration {
                     "/api/category/**",
                     "/api/carousel/**",
                 ).permitAll() // 允许任何人访问的网站
-                .requestMatchers("/api/admin/**").hasAnyRole("admin", "user") // 仅允许管理员访问的网站
+                .requestMatchers("/api/admin/**").hasAnyRole("admin") // 仅允许管理员访问的网站
                 .anyRequest().authenticated() // 其余需要验证用户可访问的网站
         }
             .formLogin { conf ->
