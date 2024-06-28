@@ -5,6 +5,8 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/ordering_backend/pom.xml" />
+        <option value="$PROJECT_DIR$/niuniu-take-out-springboot3/pom.xml" />
+        <option value="$PROJECT_DIR$/niuniu-take-out-springboot3/server/pom.xml" />
       </list>
     </option>
   </component>
