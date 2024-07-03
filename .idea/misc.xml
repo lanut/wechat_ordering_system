@@ -7,7 +7,16 @@
         <option value="$PROJECT_DIR$/ordering_backend/pom.xml" />
         <option value="$PROJECT_DIR$/niuniu-take-out-springboot3/pom.xml" />
         <option value="$PROJECT_DIR$/niuniu-take-out-springboot3/server/pom.xml" />
+        <option value="$PROJECT_DIR$/niuniu-take-out-kotlin/pom.xml" />
+        <option value="$PROJECT_DIR$/niuniu-take-out-kotlin/server/pom.xml" />
+        <option value="$PROJECT_DIR$/niuniu-take-out-kotlin/pojo/pom.xml" />
+        <option value="$PROJECT_DIR$/niuniu-take-out-kotlin/common/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/niuniu-take-out-springboot3/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">

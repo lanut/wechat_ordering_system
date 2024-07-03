@@ -1,0 +1,16 @@
+niuniu:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/niuniu_take_out
+    username: root
+    password: admin
+  redis:
+    host: localhost
+    port: 6379
+    password: admin
+    database: 1
+  wechat:
+    # noinspection SpellCheckingInspection
+    appid: wx09a2b4894a81a777
+    # noinspection SpellCheckingInspection
+    secret: ae2f2c185b96ab943ca97d736498b1dd
