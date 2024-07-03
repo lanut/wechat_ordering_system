@@ -22,7 +22,7 @@ class CategoryController {
      * @return
      */
     @GetMapping("/list")
-    fun list(type: Int): Result<List<Category>> {
+    fun list(type: Int = 1): Result<List<Category>> {
         log.info("用户想要查询的分类（套餐/菜品分类？）：{}", type)
         val categoryList = categoryService!!.getList(type)
         return Result.success(categoryList)

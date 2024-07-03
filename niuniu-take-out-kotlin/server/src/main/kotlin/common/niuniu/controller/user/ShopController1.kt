@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 @Slf4j
 class ShopController {
     @Autowired
-    private val redisTemplate: RedisTemplate<*, Any>? = null
+    private lateinit var redisTemplate: RedisTemplate<String, Any>
 
     @get:GetMapping("/status")
     val status: Result<Int>

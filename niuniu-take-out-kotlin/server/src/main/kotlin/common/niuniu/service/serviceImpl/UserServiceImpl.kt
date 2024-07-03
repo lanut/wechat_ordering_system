@@ -10,6 +10,7 @@ import common.niuniu.po.User
 import common.niuniu.properties.WeChatProperties
 import common.niuniu.service.UserService
 import common.niuniu.utils.HttpClientUtil.doGet
+import common.niuniu.utils.logInfo
 import org.springframework.beans.BeanUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -83,6 +84,7 @@ class UserServiceImpl : UserService {
         val json = doGet(WX_LOGIN, map) // 需自定义HttpClientUtil工具类
         // 解析返回的json对象，并抽取其中的openid
         val jsonObject = JSON.parseObject(json)
+        logInfo(jsonObject.toString())
         val openid = jsonObject.getString("openid")
         return openid
     }
