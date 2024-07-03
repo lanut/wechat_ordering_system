@@ -7,19 +7,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="pojo" />
-        <module name="server" />
-        <module name="common" />
         <module name="ordering_backend" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="common" target="20" />
+      <module name="niuNiu-take-out" target="1.5" />
+      <module name="pojo" target="20" />
+      <module name="server" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="common" options="-parameters" />
+      <module name="common" options="" />
       <module name="ordering_backend" options="-parameters" />
-      <module name="pojo" options="-parameters" />
-      <module name="server" options="-parameters" />
+      <module name="pojo" options="" />
+      <module name="server" options="" />
     </option>
   </component>
 </project>
