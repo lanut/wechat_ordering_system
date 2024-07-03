@@ -20,7 +20,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         // 前缀替换成代理地址： 5173 -> 8080 后端tomcat服务器端口号
-        target: 'http://localhost:8081/admin',
+        target: 'http://localhost:8080/admin',
         ws: false,
         secure: false,
         changeOrigin: true,

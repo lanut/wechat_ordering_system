@@ -199,7 +199,7 @@ const audio2 = ref<HTMLAudioElement | null>(null)
 
 const webSocket = () => {
   const clientId = Math.random().toString(36).slice(2)
-  const socketUrl = 'ws://localhost:8081/ws/' + clientId
+  const socketUrl = 'ws://localhost:8080/ws/' + clientId
   console.log('socketUrl', socketUrl)
 
   if (typeof WebSocket == 'undefined') {
