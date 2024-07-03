@@ -11,6 +11,6 @@ niuniu:
     database: 1
   wechat:
     # noinspection SpellCheckingInspection
-    appid: wx09a2b4894a81a777
+    appid: wxd919cb20c039d695
     # noinspection SpellCheckingInspection
-    secret: ae2f2c185b96ab943ca97d736498b1dd
+    secret: 34c278620eb461d6c6f91957ae73e450
