@@ -11,7 +11,7 @@
       <CuisineStatistics :dishesData="dishesData" />
       <!-- end -->
       <!-- 套餐总览 -->
-      <SetMealStatistics :setMealData="setMealData" />
+<!--      <SetMealStatistics :setMealData="setMealData" />-->
       <!-- end -->
     </div>
     <!-- 订单信息 -->
@@ -135,7 +135,7 @@ li {
     flex: 1;
 
     &:last-child {
-      margin-left: 20px;
+      margin-left: 0px;
     }
   }
 }
