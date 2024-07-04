@@ -14,7 +14,7 @@
       </uni-countdown>
     </view>
     <view class="price">￥{{ orderAmount }}</view>
-    <view class="shop">寒夜餐厅 - {{ orderNumber }}</view>
+    <view class="shop">牛牛饭店 - {{ orderNumber }}</view>
     <view class="wechat">
       <image class="pay" src="../../static/icon/pay.png" />
       微信支付

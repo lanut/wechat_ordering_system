@@ -30,7 +30,7 @@
   <!-- 1、订单菜品列表 -->
   <view class="white_box">
     <view class="word_text">
-      <text class="word_style">寒页餐厅</text>
+      <text class="word_style">牛牛饭店</text>
     </view>
     <view class="order-type">
       <view class="type_item" v-for="(obj, index) in order.orderDetailList" :key="index">

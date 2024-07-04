@@ -1,4 +1,4 @@
-export const formatDate = () => {
+ export const formatDate = () => {
   const now = new Date();
   let hour: string | number = now.getHours();
   let minute: string | number = now.getMinutes();

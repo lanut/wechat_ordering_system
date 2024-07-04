@@ -24,7 +24,7 @@ const props = defineProps({
   margin: 20px 0;
 
   img {
-    margin: 0 atuo;
+    margin: 0 auto;
     width: 238px;
     height: 184px;
     margin-top: 20px;
