@@ -12,7 +12,7 @@ export const getDishListAPI = (id: number) => {
 }
 
 /**
- * 分类列表-小程序
+ * 菜品信息-小程序
  */
 export const getDishByIdAPI = (id: number) => {
   return http<DishItem>({

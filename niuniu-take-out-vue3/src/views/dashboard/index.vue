@@ -49,8 +49,8 @@ const init = async () => {
     const overviewDishes = await getOverviewDishesAPI()
     dishesData.value = overviewDishes.data.data
 
-    const setMealStatistics = await getSetMealStatisticsAPI()
-    setMealData.value = setMealStatistics.data.data
+    // const setMealStatistics = await getSetMealStatisticsAPI()
+    // setMealData.value = setMealStatistics.data.data
 
     await getOrderListBy3Status()
   } catch (error) {

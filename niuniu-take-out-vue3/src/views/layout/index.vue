@@ -34,11 +34,11 @@ const menuList = [
     path: '/category',
     icon: 'postcard',
   },
-  {
-    title: '套餐管理',
-    path: '/setmeal',
-    icon: 'user',
-  },
+  // {
+  //   title: '套餐管理',
+  //   path: '/setmeal',
+  //   icon: 'user',
+  // },
   {
     title: '菜品管理',
     path: '/dish',
