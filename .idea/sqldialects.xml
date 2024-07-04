@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/ordering_backend/src/main/java/com/lanut/ordering_backend/mapper/UserMapper.kt" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/环境配置/数据库创建.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/环境配置/数据库数据.sql" dialect="MySQL" />
     <file url="PROJECT" dialect="MySQL" />

@@ -8,13 +8,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="pojo" />
+        <module name="common" />
         <module name="server" />
-        <module name="ordering_backend" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common (1) (com.niuniu)" target="17" />
       <module name="niuNiu-take-out" target="1.5" />
+      <module name="ordering_backend" target="17" />
       <module name="pojo (1) (com.niuniu)" target="17" />
       <module name="server (1) (com.niuniu)" target="17" />
     </bytecodeTargetLevel>

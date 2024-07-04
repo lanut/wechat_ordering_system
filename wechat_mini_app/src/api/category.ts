@@ -6,7 +6,8 @@ import { http } from '@/utils/http'
  */
 export const getCategoryAPI = () => {
   return http<CategoryItem[]>({
+    // todo 少一个type参数
     method: 'GET',
-    url: '/user/category/list',
+    url: '/user/category/list'
   })
 }
